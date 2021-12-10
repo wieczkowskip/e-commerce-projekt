@@ -36,6 +36,7 @@ const menuBtn = document.getElementById("menuBtn");
 const menuBtn2 = document.getElementById("menuBtn2");
 const toggledMenu = document.querySelector(".toggledMenu");
 const overlay = document.getElementById("overlay");
+const overlay2 = document.getElementById("overlay2");
 
 const increaseBtn = document.querySelector(".quantity__plus");
 const decreaseBtn = document.querySelector(".quantity__minus");
@@ -105,11 +106,11 @@ galleryMainPhoto.addEventListener('click', showFullGallery);
 
 function showFullGallery(){
   galleryFullSize.classList.add('active');
-  overlay.classList.add("active2");
+  overlay2.classList.add("active2");
 }
 function closeFullGalery(){
   galleryFullSize.classList.remove('active');
-  overlay.classList.remove("active2");
+  overlay2.classList.remove("active2");
 }
 
 
