@@ -9,11 +9,8 @@ const SneakersItem = new Product(
   1,
   [
     "images/image-product-1.jpg",
-
     "images/image-product-2.jpg",
-
     "images/image-product-3.jpg",
-
     "images/image-product-4.jpg",
   ],
   [
@@ -53,10 +50,8 @@ const productActualPhoto = document.querySelector(".gallery_photo img");
 const leftBtn = document.querySelector(".gallery_leftBtn img");
 const rightBtn = document.querySelector(".gallery_rightBtn img");
 
-
 const leftBtnFull = document.querySelector(".product__gallery--fullSize .gallery_leftBtn img");
 const rightBtnFull = document.querySelector(".product__gallery--fullSize .gallery_rightBtn img");
-
 
 const thumbnailPhoto1 = document.getElementById('photo1');
 const thumbnailPhoto2 = document.getElementById('photo2');
@@ -67,7 +62,6 @@ const thumbnailPhoto1Full = document.querySelector('.product__gallery--fullSize 
 const thumbnailPhoto2Full = document.querySelector('.product__gallery--fullSize #photo2');
 const thumbnailPhoto3Full = document.querySelector('.product__gallery--fullSize #photo3');
 const thumbnailPhoto4Full = document.querySelector('.product__gallery--fullSize #photo4');
-
 
 const galleryFullCloseBtn = document.querySelector('.gallery__close-btn');
 galleryFullCloseBtn.addEventListener('click', closeFullGalery);
@@ -150,7 +144,6 @@ leftBtnFull.addEventListener("click", changePhotoFull.bind(this, "left"));
 rightBtnFull.addEventListener("click", changePhotoFull.bind(this, "right"));
 
 function changePhotoFull(direction) {
-  console.log('test');
   if (direction === "left") {
     if (indexPhotoFull === 0) {
       indexPhotoFull = SneakersItem.photos.length - 1;
@@ -188,9 +181,6 @@ function closeMenu() {
 function removeItem(Item) {
   UserCart.cartList.splice(UserCart.getCartItemIndex(Item), 1); //remove from array
   const CartItemDiv = document.querySelector("#" + Item.id);
-  console.log(UserCart.getCartItemIndex(Item));
-  console.log(Item);
-  console.log(CartItemDiv);
   CartItemDiv.parentNode.removeChild(CartItemDiv);
   cartQuantity.innerHTML = UserCart.getCartQuantity();
   if (UserCart.getCartQuantity() === 0) {
@@ -235,15 +225,7 @@ function addItem() {
     const newProductPriceTotal = document.createElement("div");
     newProductPriceTotal.classList.add('text__product-price-total');
     newProductPriceTotal.innerHTML = '$' + newCartItem.getCartItemTotalPrice();
-    // newTextDiv.innerHTML =
-    //   newCartItem.ProductName +
-    //   "\n$" +
-    //   newCartItem.price +
-    //   " x " +
-    //   newCartItem.quantity +
-    //   " $" +
-    //   newCartItem.getCartItemTotalPrice();
-
+ 
     newTextDiv.appendChild(newProductName);
     newTextDiv.appendChild(newProductPriceInfo);
     newTextDiv.appendChild(newProductPriceTotal);
@@ -285,30 +267,17 @@ function addItem() {
     
     newProductPriceTotal.innerHTML = '$' + newCartItem.getCartItemTotalPrice();
 
-    
-
-    // actualTextDiv.innerHTML =
-    //   newCartItem.ProductName +
-    //   "\n$" +
-    //   newCartItem.price +
-    //   " x " +
-    //   newCartItem.quantity +
-    //   " $" +
-    //   newCartItem.getCartItemTotalPrice();
   }
   UserCart.addProduct(newCartItem);
 
   if (UserCart.getCartQuantity() > 0) {
     cartQuantity.innerHTML = UserCart.getCartQuantity();
     cartQuantity.classList.add("visible");
-    console.log("test");
   } else {
     cartQuantity.classList.remove("visible");
   }
   quantity = 1;
   updateQuantity();
-  console.log(UserCart);
-  console.log(UserCart.getCartPrice());
 }
 
 function increaseItemAmount() {
@@ -322,13 +291,3 @@ function decreaseItemAmount() {
 function updateQuantity() {
   showQuantity.innerHTML = quantity;
 }
-
-// const itemek = new CartItem(1, SneakersItem, 4);
-// const itemek2 = new CartItem(2, SneakersItem, 2);
-// UserCart.addProduct(itemek);
-// UserCart.addProduct(itemek2);
-// console.log(UserCart);
-// console.log("test");
-// console.log(UserCart.getCartPrice());
-// UserCart.removeProduct(itemek);
-// console.log(UserCart.getCartPrice());
