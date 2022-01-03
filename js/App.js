@@ -50,63 +50,97 @@ const productActualPhoto = document.querySelector(".gallery_photo img");
 const leftBtn = document.querySelector(".gallery_leftBtn img");
 const rightBtn = document.querySelector(".gallery_rightBtn img");
 
-const leftBtnFull = document.querySelector(".product__gallery--fullSize .gallery_leftBtn img");
-const rightBtnFull = document.querySelector(".product__gallery--fullSize .gallery_rightBtn img");
+const leftBtnFull = document.querySelector(
+  ".product__gallery--fullSize .gallery_leftBtn img"
+);
+const rightBtnFull = document.querySelector(
+  ".product__gallery--fullSize .gallery_rightBtn img"
+);
 
-const thumbnailPhoto1 = document.getElementById('photo1');
-const thumbnailPhoto2 = document.getElementById('photo2');
-const thumbnailPhoto3 = document.getElementById('photo3');
-const thumbnailPhoto4 = document.getElementById('photo4');
+const thumbnailPhoto1 = document.getElementById("photo1");
+const thumbnailPhoto2 = document.getElementById("photo2");
+const thumbnailPhoto3 = document.getElementById("photo3");
+const thumbnailPhoto4 = document.getElementById("photo4");
 
-const thumbnailPhoto1Full = document.querySelector('.product__gallery--fullSize #photo1');
-const thumbnailPhoto2Full = document.querySelector('.product__gallery--fullSize #photo2');
-const thumbnailPhoto3Full = document.querySelector('.product__gallery--fullSize #photo3');
-const thumbnailPhoto4Full = document.querySelector('.product__gallery--fullSize #photo4');
+const thumbnailPhoto1Full = document.querySelector(
+  ".product__gallery--fullSize #photo1"
+);
+const thumbnailPhoto2Full = document.querySelector(
+  ".product__gallery--fullSize #photo2"
+);
+const thumbnailPhoto3Full = document.querySelector(
+  ".product__gallery--fullSize #photo3"
+);
+const thumbnailPhoto4Full = document.querySelector(
+  ".product__gallery--fullSize #photo4"
+);
 
-const galleryFullCloseBtn = document.querySelector('.gallery__close-btn');
-galleryFullCloseBtn.addEventListener('click', closeFullGalery);
+const galleryFullCloseBtn = document.querySelector(".gallery__close-btn");
+galleryFullCloseBtn.addEventListener("click", closeFullGalery);
 
+thumbnailPhoto1.addEventListener(
+  "click",
+  updateMainPhoto.bind(thumbnailPhoto1, 0)
+);
+thumbnailPhoto2.addEventListener(
+  "click",
+  updateMainPhoto.bind(thumbnailPhoto2, 1)
+);
+thumbnailPhoto3.addEventListener(
+  "click",
+  updateMainPhoto.bind(thumbnailPhoto3, 2)
+);
+thumbnailPhoto4.addEventListener(
+  "click",
+  updateMainPhoto.bind(thumbnailPhoto4, 3)
+);
 
-thumbnailPhoto1.addEventListener('click', updateMainPhoto.bind(thumbnailPhoto1, 0));
-thumbnailPhoto2.addEventListener('click', updateMainPhoto.bind(thumbnailPhoto2, 1));
-thumbnailPhoto3.addEventListener('click', updateMainPhoto.bind(thumbnailPhoto3, 2));
-thumbnailPhoto4.addEventListener('click', updateMainPhoto.bind(thumbnailPhoto4, 3));
+thumbnailPhoto1Full.addEventListener(
+  "click",
+  updateMainPhotoFull.bind(thumbnailPhoto1Full, 0)
+);
+thumbnailPhoto2Full.addEventListener(
+  "click",
+  updateMainPhotoFull.bind(thumbnailPhoto2Full, 1)
+);
+thumbnailPhoto3Full.addEventListener(
+  "click",
+  updateMainPhotoFull.bind(thumbnailPhoto3Full, 2)
+);
+thumbnailPhoto4Full.addEventListener(
+  "click",
+  updateMainPhotoFull.bind(thumbnailPhoto4Full, 3)
+);
 
-thumbnailPhoto1Full.addEventListener('click', updateMainPhotoFull.bind(thumbnailPhoto1Full, 0));
-thumbnailPhoto2Full.addEventListener('click', updateMainPhotoFull.bind(thumbnailPhoto2Full, 1));
-thumbnailPhoto3Full.addEventListener('click', updateMainPhotoFull.bind(thumbnailPhoto3Full, 2));
-thumbnailPhoto4Full.addEventListener('click', updateMainPhotoFull.bind(thumbnailPhoto4Full, 3));
-
-
-const galleryMainPhotoImage = document.querySelector('.gallery_photo img');
+const galleryMainPhotoImage = document.querySelector(".gallery_photo img");
 galleryMainPhotoImage.src = SneakersItem.photos[0];
-const galleryMainPhotoImageFull = document.querySelector('.product__gallery--fullSize .gallery_photo img')
+const galleryMainPhotoImageFull = document.querySelector(
+  ".product__gallery--fullSize .gallery_photo img"
+);
 
-function updateMainPhoto(number){
-  document.querySelector('.active').classList.remove('active');
-  this.classList.add('active');
+function updateMainPhoto(number) {
+  document.querySelector(".active").classList.remove("active");
+  this.classList.add("active");
   galleryMainPhotoImage.src = SneakersItem.photos[number];
 }
-function updateMainPhotoFull(number){
-  document.querySelector('.active2').classList.remove('active2');
-  this.classList.add('active2');
+function updateMainPhotoFull(number) {
+  document.querySelector(".active2").classList.remove("active2");
+  this.classList.add("active2");
   galleryMainPhotoImageFull.src = SneakersItem.photos[number];
 }
 
-const galleryMainPhoto = document.querySelector('.gallery_photo');
-const galleryFullSize = document.querySelector('.product__gallery--fullSize');
-galleryMainPhoto.addEventListener('click', showFullGallery);
+const galleryMainPhoto = document.querySelector(".gallery_photo");
+const galleryFullSize = document.querySelector(".product__gallery--fullSize");
+galleryMainPhoto.addEventListener("click", showFullGallery);
 
-
-function showFullGallery(){
-  galleryFullSize.classList.add('active');
+function showFullGallery() {
+  galleryFullSize.classList.add("active");
   overlay2.classList.add("active2");
 }
-function closeFullGalery(){
-  galleryFullSize.classList.remove('active');
+function closeFullGalery() {
+  galleryFullSize.classList.remove("active");
   overlay2.classList.remove("active2");
 }
-
 
 increaseBtn.addEventListener("click", increaseItemAmount);
 decreaseBtn.addEventListener("click", decreaseItemAmount);
@@ -138,8 +172,6 @@ function changePhoto(direction) {
   }
 }
 
-
-
 leftBtnFull.addEventListener("click", changePhotoFull.bind(this, "left"));
 rightBtnFull.addEventListener("click", changePhotoFull.bind(this, "right"));
 
@@ -159,12 +191,12 @@ function changePhotoFull(direction) {
       galleryMainPhotoImageFull.src = SneakersItem.photos[++indexPhotoFull];
     }
   }
-  const object = document.querySelector(`.product__gallery--fullSize #photo${indexPhotoFull+1}`);
-  document.querySelector('.active2').classList.remove('active2');
-  object.classList.add('active2');
+  const object = document.querySelector(
+    `.product__gallery--fullSize #photo${indexPhotoFull + 1}`
+  );
+  document.querySelector(".active2").classList.remove("active2");
+  object.classList.add("active2");
 }
-
-
 
 function showCart() {
   cartInfo.classList.toggle("visible");
@@ -195,11 +227,16 @@ function addItem() {
     cartInfoListText.classList.add("invisible");
     cartInfoCheckout.classList.remove("invisible");
   }
+  // const newCartItem = new CartItem(
+  //   "abc" + parseInt(Math.random() * 3),
+  //   SneakersItem,
+  //   quantity
+  // );
   const newCartItem = new CartItem(
-    "abc" + parseInt(Math.random() * 3),
-    SneakersItem,
-    quantity
-  );
+      "abc1",
+      SneakersItem,
+      quantity
+    );
   if (!UserCart.isProductExist(newCartItem)) {
     const newCartItemListItem = document.createElement("li");
     newCartItemListItem.id = newCartItem.id;
@@ -211,21 +248,20 @@ function addItem() {
 
     const newTextDiv = document.createElement("div");
     newTextDiv.classList.add("list-item__text");
-    
+
     const newProductName = document.createElement("div");
-    newProductName.classList.add('text__product-name');
+    newProductName.classList.add("text__product-name");
     newProductName.innerHTML = newCartItem.ProductName;
 
     const newProductPriceInfo = document.createElement("div");
-    newProductPriceInfo.classList.add('text__product-price-info');
-    newProductPriceInfo.innerHTML = '$' + newCartItem.price +
-       " x " +
-       newCartItem.quantity;
+    newProductPriceInfo.classList.add("text__product-price-info");
+    newProductPriceInfo.innerHTML =
+      "$" + newCartItem.price + " x " + newCartItem.quantity;
 
     const newProductPriceTotal = document.createElement("div");
-    newProductPriceTotal.classList.add('text__product-price-total');
-    newProductPriceTotal.innerHTML = '$' + newCartItem.getCartItemTotalPrice();
- 
+    newProductPriceTotal.classList.add("text__product-price-total");
+    newProductPriceTotal.innerHTML = "$" + newCartItem.getCartItemTotalPrice();
+
     newTextDiv.appendChild(newProductName);
     newTextDiv.appendChild(newProductPriceInfo);
     newTextDiv.appendChild(newProductPriceTotal);
@@ -243,8 +279,8 @@ function addItem() {
 
     newDeleteBtnDiv.appendChild(newDeleteBtn);
 
-    newCartItemListItem.appendChild(newPhotoDiv);     //children[0]
-    newCartItemListItem.appendChild(newTextDiv);      //children[1]
+    newCartItemListItem.appendChild(newPhotoDiv); //children[0]
+    newCartItemListItem.appendChild(newTextDiv); //children[1]
     newCartItemListItem.appendChild(newDeleteBtnDiv); //children[2]
 
     cartInfoListUL.appendChild(newCartItemListItem);
@@ -254,19 +290,17 @@ function addItem() {
     );
 
     const newProductName = actualTextDiv.children[0]; //children[0]
-    
+
     newProductName.innerHTML = newCartItem.ProductName;
 
-    const newProductPriceInfo = actualTextDiv.children[1];  //children[1]
-    
-    newProductPriceInfo.innerHTML = '$' + newCartItem.price +
-       " x " +
-       newCartItem.quantity;
+    const newProductPriceInfo = actualTextDiv.children[1]; //children[1]
+
+    newProductPriceInfo.innerHTML =
+      "$" + newCartItem.price + " x " + newCartItem.quantity;
 
     const newProductPriceTotal = actualTextDiv.children[2]; //children[2]
-    
-    newProductPriceTotal.innerHTML = '$' + newCartItem.getCartItemTotalPrice();
 
+    newProductPriceTotal.innerHTML = "$" + newCartItem.getCartItemTotalPrice();
   }
   UserCart.addProduct(newCartItem);
 
@@ -285,8 +319,10 @@ function increaseItemAmount() {
   updateQuantity();
 }
 function decreaseItemAmount() {
-  quantity--;
-  updateQuantity();
+  if (quantity > 1) {
+    quantity--;
+    updateQuantity();
+  }
 }
 function updateQuantity() {
   showQuantity.innerHTML = quantity;
